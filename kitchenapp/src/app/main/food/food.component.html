@@ -1,0 +1,339 @@
+<div class="nav-image-bg mt-1 nav-image-bg-shadow">
+    <div class="container" style="height: 100%">
+      <div
+        class="content-block">
+        <div class="slider-nav-count">
+          <h2 class="title-slide">
+            <span style="color: rgb(255, 255, 255); text-transform: initial"
+              >{{categoryTitle}}</span>
+          </h2>
+        </div>
+        <span style="color: rgb(255, 255, 255); text-transform: initial"
+              >Главная > {{categoryTitle}}</span>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container-fluid p-0">
+  <div class="card">
+ <div class="container-fluid " id="main-container">
+
+  <div class="display-panel">
+    <button [hidden]="!isAdmin" type="button" mat-raised-button class="btn-add" data-toggle="modal" data-target="#addFoodModal">
+      <i class="fa fa-plus"></i>Добавить позицию
+    </button>
+    <form class="form-inline my-2 my-lg-0 justify-content-center" style="padding-top: 14px;margin-left: 1rem;">
+      <input name="searchTerm" #searchInput="ngModel" class="form-control mr-sm-2" ngModel
+      (ngModelChange)="searchFoods(searchInput.value)" type="search" placeholder="Поиск еды...">
+   </form>
+  </div>
+
+ <div class="row">
+   <div *ngFor="let food of foods" class="col-md-6 col-xl-3 pt-3">
+      <div class="card m-b-30">
+         <div class="card-body row">
+            <div class="text-center rounded mx-auto d-block">
+               <a (click)="onSelectFood(food)"><img src="{{food?.foodImageUrl}}" alt="" width="250px" height="250px"></a>
+            </div>
+            <div class="caption">
+               <h2 class="glyphicon glyphicon-th-large">{{food?.name}}</h2>
+               <p class="m-0">{{food?.description}}</p>
+            </div>
+         </div>
+         <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-balance-scale float-right"></i>Вес: {{food?.weight}} г</li>
+            <li class="list-group-item"><i class="fa fa-rub float-right" ></i>Стоимость: {{food?.price}} р.</li>
+            <li class="list-group-item">Каллории: {{food?.calories}}</li>
+         </ul>
+         <div class="card-body">
+          <div class="float-left btn-group ">
+            <button mat-raised-button (click)="toBasket(food)" class="btn-basket" ><i>В корзину</i> </button>
+          </div>
+            <div class="float-right ">
+               <button mat-raised-button (click)="onEditFood(food)" class="btn-edite" ><i class="fa fa-pencil" style="color: white;"></i> </button>
+               <button mat-raised-button (click)="onDeleteFood(food.id)" class="btn-delete"><i class="fa fa-times" style="color: white;"></i></button>
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+
+ <button [hidden]="true" type="button" id="openFoodInfo" data-toggle="modal" data-target="#viewFoodModal">
+</button>
+<button [hidden]="true" type="button" id="openFoodEdit" data-toggle="modal" data-target="#editFoodModal">
+</button>
+
+      <!-- modal food info -->
+      <div class="modal fade bd-example-modal-lg" id="viewFoodModal" tabindex="-1" role="dialog" aria-labelledby=""
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLongTitle">{{selectedFood?.name}}
+                
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12 col-sm-auto">
+                        <div class="mx-auto" style="width: 120px;">
+                          <div class="d-flex justify-content-center align-items-center rounded">
+                            <img class="rounded" height="120" width="120" src="{{selectedFood?.foodImageUrl}}" alt="{{selectedFood?.name}}">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col d-flex flex-column flex-sm-row justify-content-between">
+                        <div class="text-center text-sm-left mb-sm-0">
+                          <h6 class="pt-sm-2 pb-1 mb-0 text-nowrap">id продукта:{{selectedFood?.foodId}}
+                            </h6>
+                          <p class="mb-1">{{selectedFood?.name}}</p>
+                          <div class="">Позиция:
+                            <span [hidden]="!selectedFood?.active" class="badge badge-success">Активна</span>
+                            <span [hidden]="selectedFood?.active" class="badge badge-danger">Не активна</span>
+                          </div>
+                          <div class="text-muted"><small>Дата добавления: {{selectedFood?.lastUpdateDate | date: 'dd:MM:YYYY'}}</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Состав: {{selectedFood?.description}}</li>
+                    <li class="list-group-item">
+                      <div>Каллории: {{selectedFood?.calories}}</div>
+                      <div>Белки: {{selectedFood?.proteins}} г</div>
+                      <div>Жиры: {{selectedFood?.fats}} г</div>
+                      <div>Углеводы: {{selectedFood?.carbs}} г</div>
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-rub float-right"></i>Цена: {{selectedFood?.price}} р.
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fa fa-balance-scale float-right"></i>Вес: {{selectedFood?.weight}} г
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" mat-raised-button class="btn-close" data-dismiss="modal">Закрыть</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- model add food -->
+      <div class="modal draggable fade bd-example-modal-lg" id="addFoodModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Добавить новую позицию</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <form #newFoodForm="ngForm" (ngSubmit)="onAddNewFood(newFoodForm)">
+                  <div class="form-group">
+                    <label for="name">Название</label>
+                    <input type="text" name="name" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Состав</label>
+                    <input type="text" name="description" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="calories">Калории</label>
+                    <input type="text" name="calories" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="proteins">Белки</label>
+                    <input type="text" name="proteins" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="carbs">Углеводы</label>
+                    <input type="text" name="carbs" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="fats">Жиры</label>
+                    <input type="text" name="fats" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Цена</label>
+                    <input type="text" name="price" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="weight">Вес</label>
+                    <input type="text" name="weight" required ngModel class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="timeCook">Время приготовления</label>
+                    <input type="text" name="timeCook" required ngModel class="form-control">
+                  </div>
+                  <div hidden class="form-group">
+                    <label for="category">Категория</label>
+                    <input type="text" name="category" required [(ngModel)]="category" readonly class="form-control">
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Картинка</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" accept="image/*" name="foodImageUrl"
+                      (change)="onFoodImageChange($event.target.files[0].name, $event.target.files[0])"
+                        class="custom-file-input">
+                      <label class="custom-file-label"><span [hidden]="!fileName">{{ fileName }}</span>
+                        <span [hidden]="fileName">Выберете файл</span>
+                      </label>
+                    </div>
+                  </div>
+                  <fieldset class="form-group">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" name="active" ngModel class="form-check-input" >
+                        Активна
+                      </label>
+                    </div>
+                    <div hidden  class="form-check disabled">
+                      <label class="form-check-label">
+                      <input type="checkbox" name="notLocked" ngModel="true" class="form-check-input">
+                        Заблокирована
+                      </label>
+                    </div>
+                    <div hidden class="form-check disabled">
+                      <label class="form-check-label">
+                      <input type="checkbox" name="free" ngModel="false" class="form-check-input">
+                        Бесплатно
+                      </label>
+                    </div>
+                  </fieldset>
+                  <button type="submit" style="display: none;" id="new-food-save"></button>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" mat-raised-button class="btn-close" data-dismiss="modal" id="new-food-close">Закрыть</button>
+              <button type="button" mat-raised-button class="btn-save" (click)="saveNewFood()" [disabled]="newFoodForm.invalid">Сохранить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+       <!-- modal edit food -->
+    <div class="modal draggable fade bd-example-modal-lg" id="editFoodModal" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center">Изменить {{editFood?.name}}
+            </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="">
+            <form #editFoodForm="ngForm">
+              <div hidden class="form-group">
+                <label for="id">Название</label>
+                <input type="text" name="id" required
+                  [(ngModel)]="editFood.id" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="name">Название</label>
+                <input type="text" name="name" required
+                  [(ngModel)]="editFood.name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="description">Состав</label>
+                <input type="text" name="description" required
+                  [(ngModel)]="editFood.description" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="calories">Калории</label>
+                <input type="text" name="calories" required [(ngModel)]="editFood.calories"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="proteins">Белки</label>
+                <input type="text" name="proteins" required [(ngModel)]="editFood.proteins"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="carbs">Углеводы</label>
+                <input type="text" name="carbs" required [(ngModel)]="editFood.carbs"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="fats">Жиры</label>
+                <input type="text" name="fats" required [(ngModel)]="editFood.fats"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="price">Цена</label>
+                <input type="text" name="price" required [(ngModel)]="editFood.price"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="weight">Вес</label>
+                <input type="text" name="weight" required [(ngModel)]="editFood.weight"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="timeCook">Время приготовления</label>
+                <input type="text" name="timeCook" required [(ngModel)]="editFood.timeCook"
+                  class="form-control">
+              </div>
+              
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Картинка</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" accept="image/*" name="foodImageUrl"
+                    (change)="onFoodImageChange($event.target.files[0].name, $event.target.files[0])"
+                    class="custom-file-input">
+                  <label class="custom-file-label"><span [hidden]="!fileName">{{fileName}}</span>
+                    <span [hidden]="fileName">Выбрать файл</span>
+                  </label>
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input name="active" type="checkbox"  [(ngModel)]="editFood.active"
+                      class="form-check-input">
+                    Активно 
+                  </label>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  mat-raised-button class="btn-close" data-dismiss="modal" id="closeEditFoodModalButton">Закрыть</button>
+          <button type="button" mat-raised-button class="btn-save" (click)="onUpdateFood()">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+      <!-- profile image change form -->
+    <form enctype="multipart/form-data" style="display:none;">
+        <input type="file"
+          (change)="onFoodImageChange($event.target.files[0].name, $event.target.files[0]);"
+         name="profile-image-input" id="profile-image-input" placeholder="file" accept="image/*" />
+    </form>
+  
+  
+ 

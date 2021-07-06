@@ -1,0 +1,379 @@
+input[type="radio"]{
+    -webkit-appearance: none;
+    
+}
+
+input[type="radio"]:checked + label{
+  background:#69F0AE;
+}
+
+input[type="radio"]:checked + label.seat{
+  background: rgba(94, 92, 92, 0.6);
+}
+
+input[type="radio"]:disabled + label.seat{
+  background: #E91E63;
+}
+
+.pt{
+    padding-top: 72px;
+}
+
+.container{
+  min-height: 576px;
+    max-width: 800px;
+}
+
+.main-block{
+    position: relative;
+    padding: 5rem 0 100px 0;
+}
+
+.main-block-title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 34px;
+}
+
+.main-block-tzone{
+  display: flex;
+  padding-left: 2rem;
+}
+
+.main-block-time{
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.main-block-card-list{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.mb-list{
+    margin-bottom: 35px;
+}
+
+.main-block-basket-list-item{
+  min-width: 75px;
+  width: 82px;
+  padding: 10px 0px 10px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.mr{
+  margin-right: 1.75rem;
+}
+
+.ml{
+  margin-left: 1.75rem;
+}
+
+.pay-finish-zone{
+  padding-left: 1.75rem;
+  margin-bottom: 35px;
+}
+
+.btn-pay{
+  padding: 0px;
+  width: 300px;
+  left: 50%;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#6A1B9A;
+  border-radius: 15px;
+  transform: translate(-50%);
+}
+
+.pay-finish{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.calculator-list{
+    padding-left: 0.75rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    border-bottom: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .calculator-item-zone{
+      padding: 10px,0px,10px,0px;
+  }
+
+.calculator-item{   
+    padding-top: 2rem;
+    width: 40%;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+
+  .calculator-item-img{
+      margin-right: 1rem;
+      margin-bottom: 10px;
+  }
+
+  .calculator-item-title {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+
+  .calculator-item-info {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: #7f7f7f;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    width: auto;
+}
+
+.calculator-item-calories {
+  margin-right: 25px;
+}
+
+  .calculator-item-bottom{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .calculator-item-controls {
+    padding-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: auto;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    
+}
+
+.calculator-btn {
+  width: 30px;
+  min-width: 30px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 5px;
+  font-family: Rubik;
+}
+
+.calculator-count{
+    font-size: 16px;
+}
+
+.basket-empty{
+    line-height: 47px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    text-align: center;
+}
+
+.calculator-sum{
+    padding-top: 2rem;
+    font-size: 16px;
+    margin-left: 1.5rem;
+    margin-right: 25px;
+}
+
+.calculator-btn-delete {
+  padding: 0px;
+  width: 100px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 30px;
+}
+
+/* Dinner zone */
+.dinner-zone{
+  display: flex;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  width: 100%;
+}
+
+.main-zone {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.dinner-zone-enter-title{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.dinner-seats {
+  width: 100%;
+}
+.dinner-seats .seat {
+  cursor: pointer;
+}
+.dinner-seats .seat:hover:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+}
+.dinner-seats .seat.active:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 7px;
+}
+.left .dinner-row {
+  width: auto;
+  display: flex;
+  margin: 0 6px;
+  justify-content: space-between;
+}
+.left .seat {
+  width: 35px;
+  height: 35px;
+  border-radius: 7px;
+  background: #69F0AE;
+  margin-bottom: 10px;
+  transform: skew(0deg);
+}
+
+
+.table{
+  width: 100%;
+  height: 35px;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(233, 233, 233, 0.678);
+  box-shadow: 1px 1px 1px 1px rgba(76, 25, 124, 0.5);
+}
+
+.table-kitchen{
+  width: 100%;
+  height: 35px;
+  
+  border:1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: rgba(233, 233, 233, 0.678);
+  box-shadow: 1px 1px 1px 1px rgba(76, 25, 124, 0.5);
+}
+
+.table-space{
+  width: 100%;
+  height: 35px;
+}
+
+.table-title{
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 5px;
+  height: 100%;
+}
+
+.right .dinner-row {
+  width: auto;
+  display: flex;
+  margin: 0 6px;
+  justify-content: space-between;
+}
+.seat {
+  width: 35px;
+  height: 35px;
+  border-radius: 7px;
+  background: #69F0AE;
+  margin-bottom: 10px;
+  transform: skew(0deg);
+}
+
+.seat-b {
+  width: 35px;
+  height: 35px;
+  border-radius: 7px;
+  background: #E91E63;
+  margin-bottom: 10px;
+  transform: skew(0deg);
+}
+
+.seat-checked{
+  width: 35px;
+  height: 35px;
+  border-radius: 7px;
+  background: rgba(94, 92, 92, 0.6);
+  margin-bottom: 10px;
+  transform: skew(0deg);
+}
+
+.seat-busy {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background: #6A1B9A;
+  margin-bottom: 10px;
+  transform: skew(0deg);
+}
+
+.legend{
+  display: flex;
+  margin-left:0.5rem;
+  flex-direction: column;
+}
+
+.legend-text{
+  padding-top: 0.25rem;
+  margin-left: 0.5rem;
+  font-weight: 300;
+}
+
+.message-content{
+    position: relative;
+    padding: 22px 20px 15px 35px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 100px;
+    width: 100%;
+    pointer-events: auto;
+    background-color:white;
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(76, 25, 124, 0.5);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.message-title{
+  display: block;
+    font-size: 26px;
+    line-height: 47px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    text-align: center;
+}

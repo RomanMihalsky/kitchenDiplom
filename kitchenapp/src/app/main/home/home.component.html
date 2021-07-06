@@ -1,0 +1,240 @@
+<!-- Welcome home image -->
+<div class="nav-image-bg mt-1 nav-image-bg-shadow">
+    <div class="container" style="height: 100%">
+      <div
+        class="content-block"
+        style="
+          height: 100%;
+          display: flex;
+          align-items: center;
+          position: relative;
+        "
+      >
+        <div class="slider-nav-count" style="width: 100%; text-align: center">
+          <h2 class="title-slide">
+            <span style="color: #222; text-transform: initial"
+              >В сотрудничестве с DietLab</span
+            >
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Food links -->
+  <div class="main-zone">
+    <div class="main-block">
+      <div class="container">
+        <p class="main-block-title">Еда</p>
+        <div class="main-block-card-list">
+          <button (click)="toFoodCategory('Soup')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/soup.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Супы</p>
+          </div>
+        </button>
+
+          <button (click)="toFoodCategory('Dinner')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/meal.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Обеды</p>
+          </div>
+        </button>
+
+          <button (click)="toFoodCategory('Salad')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/salad.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Салаты</p>
+          </div>
+        </button>
+          
+          <button (click)="toFoodCategory('Dessert')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/yoghurt.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Десерты</p>
+          </div>
+        </button>
+          
+          <button (click)="toFoodCategory('Fruit')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/healthy-food.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Фрукты</p>
+          </div>
+        </button>
+  
+        <button (click)="toFoodCategory('Drink')">
+          <div class="main-block-card-list-item">
+            <div class="icon">
+              <img src="../../assets/images/water.png"alt="" height="100px" width="100px"/>
+            </div>
+            <p class="title">Напитки</p>
+          </div>
+        </button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Table -->
+  <div class="table-zone">
+    <div class="container">
+      <div class="raw">
+        <div class="col-md-8 left-side">
+          <table class="table table-hover nav-image-bg-shadow" style="border-radius:8px; overflow: hidden;">
+            <thead class="table-borderless thead-colors">
+              <tr class="text-center">
+                <th>Картинка</th>
+                <th>Название</th>
+                <th>Ккал(ккал)</th>
+                <th>Вес(г)</th>
+                <th>Цена</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let food of foods" style="align-items: center;">
+              <tr class="text-center">
+                <td (click)="onSelectFood(food)" class="icon">
+                  <img height="65" width="65" src="{{food?.foodImageUrl}}" class="rounded-circle img-fluid img-thumbnail" alt=""/>
+                </td>
+                <td (click)="onSelectFood(food)" class="td-text">{{food?.name}}</td>
+                <td (click)="onSelectFood(food)" class="td-text">{{food?.calories}}</td>
+                <td (click)="onSelectFood(food)" class="td-text">{{food?.weight}}</td>
+                <td (click)="onSelectFood(food)" class="td-text">{{food?.price}}</td>
+                <td class="">
+                  <div class="btn-group">
+                    <button mat-raised-button style="color: white; background:#69F0AE; outline: 0px; border:0px;" (click)="onCalk(food)" ><i>Добавить</i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button [hidden]="true" type="button" id="openFoodInfo" data-toggle="modal" data-target="#viewFoodModal">
+        </button>
+
+        <!-- modal food info -->
+      <div class="modal fade bd-example-modal-lg" id="viewFoodModal" tabindex="-1" role="dialog" aria-labelledby=""
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLongTitle">{{selectedFood?.name}}
+              
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12 col-sm-auto">
+                      <div class="mx-auto" style="width: 120px;">
+                        <div class="d-flex justify-content-center align-items-center rounded">
+                          <img class="rounded" height="120" width="120" src="{{selectedFood?.foodImageUrl}}" alt="{{selectedFood?.name}}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col d-flex flex-column flex-sm-row justify-content-between">
+                      <div class="text-center text-sm-left mb-sm-0">
+                        <h6 class="pt-sm-2 pb-1 mb-0 text-nowrap">id продукта:{{selectedFood?.foodId}}
+                          </h6>
+                        <p class="mb-1">{{selectedFood?.name}}</p>
+                        <div class="">Позиция:
+                          <span [hidden]="!selectedFood?.active" class="badge badge-success">Активна</span>
+                          <span [hidden]="selectedFood?.active" class="badge badge-danger">Не активна</span>
+                        </div>
+                        <div class="text-muted"><small>Дата добавления: {{selectedFood?.lastUpdateDate | date: 'dd:MM:YYYY'}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Состав: {{selectedFood?.description}}</li>
+                  <li class="list-group-item">
+                    <div>Каллории: {{selectedFood?.calories}}</div>
+                    <div>Белки: {{selectedFood?.proteins}} г</div>
+                    <div>Жиры: {{selectedFood?.fats}} г</div>
+                    <div>Углеводы: {{selectedFood?.carbs}} г</div>
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-rub float-right"></i>Цена: {{selectedFood?.price}} р.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-balance-scale float-right"></i>Вес: {{selectedFood?.weight}} г
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="col-md-4 right-side">
+          <div class="calk-col">
+            <div class="calculator">
+              <div class="calculator-title">Калькулятор</div>
+              <div *ngFor="let food of foodCount | keyvalue">
+              <div class="calculator-list">
+                <div class="calculator-item">
+                  <div class="calculator-item-title">{{food?.value.food.name}}</div>
+                  <div class="calculator-item-info">
+                    <div class="calculator-item-calories">{{food?.value.food.calories}} ккал</div>
+                    <div class="calculator-item-weight">{{food?.value.food.weight}} г</div>
+                  </div>
+                  <div class="calculator-item-bottom">
+                    <div class="calculator-item-controls">
+                      <button mat-raised-button class="calculator-btn" (click)="onPlusCount(food?.value.food)">+</button>
+                      <div class="calculator-count">{{food?.value.count}}</div>
+                      <button mat-raised-button class="calculator-btn" (click)="onMinusCount(food?.value.food)">-</button>
+                    </div>
+                    <div class="calculator-sum">{{food?.value.sum}} р.</div>
+                    <div>
+                      <button mat-raised-button class="calculator-btn-delete" (click)="onRemoveFood(food?.value.food)">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class = "calculator-footer">
+                <div class="calculator-result-position">
+                  <div class="calculator-result-title">
+                    итого
+                  </div>
+                  <div class="calculator-result">
+                    <span class = "calculator-result-price">{{basketSum.sumPrice}} р.</span>
+                    <span class="calculator-result">{{basketSum.sumCalories}} ккал</span>
+                  </div>
+                </div>
+                <div *ngIf="wishFood.length > 0">
+                  <button mat-raised-button class="calculator-btn-basket" (click)="toBasket()"><mat-icon aria-hidden="false">
+                    <span class="material-icons">
+                    add_shopping_cart
+                    </span>
+                  </mat-icon> В корзину </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

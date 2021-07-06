@@ -1,0 +1,395 @@
+<div *ngIf="wishFood.length !=0" class="pt">
+  <div class="container">
+    <div class="main-block">
+      <div class="main-block-title">Оплата</div>
+      <div class="mb-list">
+        <div *ngFor="let food of foodCount | keyvalue">
+          <div class="calculator-list">
+            <div class="calculator-item-img">
+              <img height="100" width="100" src="{{food?.value.food.foodImageUrl}}" class="rounded-circle img-fluid img-thumbnail" alt=""/>
+            </div>
+            <div class="calculator-item">
+              <div class="calculator-item-title">{{food?.value.food.name}}</div>
+              <div class="calculator-item-info">
+                <div class="calculator-item-calories">{{food?.value.food.calories}} ккал</div>
+                <div class="calculator-item-weight">{{food?.value.food.weight}} гр.</div>
+              </div>
+            </div>
+            <div class="calculator-item-bottom">
+              <div class="calculator-item-controls">
+                <div class="calculator-count">Количество: {{food?.value.count}}</div>
+              </div>
+              <div class="calculator-sum">Цена: {{food?.value.sum}} р.</div>
+            </div>
+            </div>
+        </div>
+        </div>
+      <div class="pay-finish-zone">
+          <div class="pay-finish"> Сумма заказа: {{this.basketSum.sumPrice}}</div>
+      </div>
+      <div class="main-block-title">Выбрать место</div>
+      <div class="main-block-card-list">
+        <input type="radio" name="place-choice" value="away" (change)="radioChangeHandler($event)" id="take-away" checked/>
+        <label for="take-away" class="main-block-basket-list-item mr">
+          <img src="../../assets/images/take-away.png" alt="" title="Взять с собой" height="65px" width="65px"/>
+        </label>
+        <input type="radio" name="place-choice" value="here" (change)="radioChangeHandler($event)" id="here" />
+        <label for="here" class="main-block-basket-list-item ml">
+          <img src="../../assets/images/chair.png" alt="" title="Выбрать место" height="75px" width="65px"/>
+        </label>
+      </div>
+      <div *ngIf="selectedPlace == 'here'">
+        <div class="main-block-title">Выбрать место</div>
+        <div class="main-block-tzone">
+          <div>
+            <mat-label><div class="main-block-time">Выбрать время: </div></mat-label>
+            <mat-select matNativeControl>
+            <div *ngFor="let date of dates">
+              <mat-option *ngIf="checkDate(date.date)"  (click)=disabledSeat(date) [value]="date.date | date : 'yyyy-MM-dd T HH:mm:ss.SSS'">
+                <div>{{date.date | date : 'HH:mm'}}</div>
+              </mat-option>
+          </div>
+          </mat-select></div>
+          <div class="legend">
+            <div style="display: flex;">
+              <div class="seat">
+              </div>
+              <div class="legend-text">
+                - Свободно
+              </div>
+              
+            </div>
+            <div style="display: flex;">
+              <div class="seat-busy">
+              </div>
+              <div class="legend-text">
+                - Занято
+              </div>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div style="display: flex;">
+              <div class="seat-b">
+              </div>
+              <div class="legend-text">
+                - Забронированно
+              </div>
+            </div>
+
+            <div style="display: flex;">
+              <div class="seat-checked">
+              </div>
+              <div class="legend-text">
+                - Выбрано
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="dinner-zone">
+        <div class="main-zone">
+  
+          <div class="dinner-seats left">
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="1" id="r1" />
+              <label for="r1" [class]="checkPlace('1')"  ></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="2" id="r2" />
+              <label for="r2" [class]="checkPlace('2')"  ></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="3" id="r3" />
+              <label for="r3" [class]="checkPlace('3')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="4" id="r4" />
+              <label for="r4" [class]="checkPlace('4')"></label>
+              <input   type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="5" id="r5" />
+              <label for="r5" [class]="checkPlace('5')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="6" id="r6" />
+              <label for="r6" [class]="checkPlace('6')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="7" id="r7" />
+              <label for="r7" [class]="checkPlace('7')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="8" id="r8" />
+              <label for="r8"  [class]="checkPlace('8')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="9" id="r9" />
+              <label for="r9" [class]="checkPlace('9')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="10" id="r10" />
+              <label for="r10" [class]="checkPlace('10')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="11" id="r11" />
+              <label for="r11" [class]="checkPlace('11')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="12" id="r12" />
+              <label for="r12" [class]="checkPlace('12')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="13" id="r13" />
+              <label for="r13" [class]="checkPlace('13')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="14" id="r14" />
+              <label for="r14" [class]="checkPlace('14')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="15" id="r15" />
+              <label for="r15"  [class]="checkPlace('15')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="16" id="r16" />
+              <label for="r16" [class]="checkPlace('16')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="17" id="r17" />
+              <label for="r17" [class]="checkPlace('17')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="18" id="r18" />
+              <label for="r18" [class]="checkPlace('18')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="19" id="r19" />
+              <label for="r19" [class]="checkPlace('19')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="20" id="r20" />
+              <label for="r20" [class]="checkPlace('20')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="21" id="r21" />
+              <label for="r21" [class]="checkPlace('21')"></label>
+            </div>
+            
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="22" id="r22" />
+              <label for="r22"  [class]="checkPlace('22')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="23" id="r23" />
+              <label for="r23" [class]="checkPlace('23')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="24" id="r24" />
+              <label for="r24" [class]="checkPlace('24')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="25" id="r25" />
+              <label for="r25" [class]="checkPlace('25')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="26" id="r26" />
+              <label for="r26" [class]="checkPlace('26')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="27" id="r27" />
+              <label for="r27" [class]="checkPlace('27')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="28" id="r28" />
+              <label for="r28" [class]="checkPlace('28')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="29" id="r29" />
+              <label for="r29"  [class]="checkPlace('29')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="30" id="r30" />
+              <label for="r30" [class]="checkPlace('30')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="31" id="r31" />
+              <label for="r31" [class]="checkPlace('31')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="32" id="r32" />
+              <label for="r32" [class]="checkPlace('32')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="33" id="r33" />
+              <label for="r33" [class]="checkPlace('33')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="34" id="r34" />
+              <label for="r34" [class]="checkPlace('34')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="35" id="r35" />
+              <label for="r35" [class]="checkPlace('35')"></label>
+            </div>
+        
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat"  (change)="radioChangeHandlerSeat($event)" value="36" id="r36" />
+              <label for="r36"  [class]="checkPlace('36')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="37" id="r37" />
+              <label for="r37" [class]="checkPlace('37')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="38" id="r38" />
+              <label for="r38" [class]="checkPlace('38')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="39" id="r39" />
+              <label for="r39" [class]="checkPlace('39')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="40" id="r40" />
+              <label for="r40" [class]="checkPlace('40')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="41" id="r41" />
+              <label for="r41" [class]="checkPlace('41')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="42" id="r42" />
+              <label for="r42" [class]="checkPlace('42')"></label>
+            </div>
+          </div>
+        
+           <div class="dinner-zone-enter-title">ВХОД</div>
+
+          <div class="dinner-seats right">
+
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="43" id="r43" />
+              <label for="r43"  [class]="checkPlace('43')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="44" id="r44" />
+              <label for="r44" [class]="checkPlace('44')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="45" id="r45" />
+              <label for="r45" [class]="checkPlace('45')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="46" id="r46" />
+              <label for="r46" [class]="checkPlace('46')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="47" id="r47" />
+              <label for="r47" [class]="checkPlace('47')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="48" id="r48" />
+              <label for="r48" [class]="checkPlace('48')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="49" id="r49" />
+              <label for="r49" [class]="checkPlace('49')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="50" id="r50" />
+              <label for="r50"  [class]="checkPlace('50')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="51" id="r51" />
+              <label for="r51" [class]="checkPlace('51')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="52" id="r52" />
+              <label for="r52" [class]="checkPlace('52')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="53" id="r53" />
+              <label for="r53" [class]="checkPlace('53')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="54" id="r54" />
+              <label for="r54" [class]="checkPlace('54')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="55" id="r55" />
+              <label for="r55" [class]="checkPlace('55')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="56" id="r56" />
+              <label for="r56" [class]="checkPlace('56')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="57" id="r57" />
+              <label for="r57"  [class]="checkPlace('57')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="58" id="r58" />
+              <label for="r58" [class]="checkPlace('58')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="59" id="r59" />
+              <label for="r59" [class]="checkPlace('59')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="60" id="r60" />
+              <label for="r60" [class]="checkPlace('60')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="61" id="r61" />
+              <label for="r61" [class]="checkPlace('61')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="62" id="r62" />
+              <label for="r62" [class]="checkPlace('62')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="63" id="r63" />
+              <label for="r63" [class]="checkPlace('63')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="64" id="r64" />
+              <label for="r64"  [class]="checkPlace('64')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="65" id="r65" />
+              <label for="r65" [class]="checkPlace('65')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="66" id="r66" />
+              <label for="r66" [class]="checkPlace('66')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="67" id="r67" />
+              <label for="r67" [class]="checkPlace('67')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="68" id="r68" />
+              <label for="r68" [class]="checkPlace('68')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="69" id="r69" />
+              <label for="r69" [class]="checkPlace('69')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="70" id="r70" />
+              <label for="r70" [class]="checkPlace('70')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table-space"></div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="71" id="r71" />
+              <label for="r71"  [class]="checkPlace('71')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="72" id="r72" />
+              <label for="r72" [class]="checkPlace('72')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="73" id="r73" />
+              <label for="r73" [class]="checkPlace('73')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="74" id="r74" />
+              <label for="r74" [class]="checkPlace('74')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="75" id="r75" />
+              <label for="r75" [class]="checkPlace('75')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="76" id="r76" />
+              <label for="r76" [class]="checkPlace('76')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="77" id="r77" />
+              <label for="r77" [class]="checkPlace('77')"></label>
+            </div>
+
+            <div class="dinner-row">
+              <div class="table">
+                <div class="table-title">СТОЛ</div>
+              </div>
+            </div>
+        
+            <div class="dinner-row">
+              <input type="radio" name="seat" (change)="radioChangeHandlerSeat($event)"  value="78" id="r78" />
+              <label for="r78"  [class]="checkPlace('78')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="79" id="r79" />
+              <label for="r79" [class]="checkPlace('79')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="80" id="r80" />
+              <label for="r80" [class]="checkPlace('80')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="81" id="r81" />
+              <label for="r81" [class]="checkPlace('81')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="82" id="r82" />
+              <label for="r82" [class]="checkPlace('82')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="83" id="r83" />
+              <label for="r83" [class]="checkPlace('83')"></label>
+              <input  type="radio" name="seat" (change)="radioChangeHandlerSeat($event)" value="84" id="r84" />
+              <label for="r84" [class]="checkPlace('84')"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dinner-row">
+        <div class="table-kitchen">
+          <div class="table-title">СТОЛ ЗАКАЗОВ</div>
+        </div>
+      </div>
+    </div>
+
+      <div style="margin-top: 50px;">
+        <button mat-raised-button (click)="pay(0)" class="btn-pay">Оплатить</button>
+      </div>
+      <button [hidden]="true" type="button" id="openMessage" data-toggle="modal" data-target="#viewMessage"></button>
+
+      <div class="modal draggable fade bd-example-modal-lg" id="viewMessage" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog msize" role="document">
+          <div class="message-content">
+            <div class="message-title">
+              <p>Спасибо за покупку!</p>
+            </div>
+            <div>
+              <p>Номер вашего заказа: {{order.orderId}}</p>
+              <p>Время приготовления: {{calculatedTime}} мин.</p>
+              <br>
+              <p style="text-align: center; font-size: 10px;">Подробная информация о заказе отправлена на почту: {{order?.user?.email}} .</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

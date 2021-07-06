@@ -1,0 +1,255 @@
+
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+/* Navbar */
+.nav-bshadow{
+    top: 0px;
+    box-shadow: 10px 10px 10px rgba(76, 25, 124, 0.5);
+    position: fixed;
+    z-index: 3;
+}
+
+.navbar-space{
+    flex:1 1 auto;
+}
+
+.navbar-button{
+    outline: 0px; border:0px;
+}
+
+
+.navbaar-icon-btn{
+    padding: 0px;
+    border: 0;
+    outline: 0;
+    margin-right: 1rem;
+  }
+
+.block{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Basket */
+.msize{
+    margin-top: 6%;
+    max-width: 500px;
+}
+.basket-content {
+    position: relative;
+    padding: 22px 20px 15px 35px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 580px;
+    width: 100%;
+    pointer-events: auto;
+    background-color:white;
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(76, 25, 124, 0.5);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.basket-title{
+    display: block;
+    font-size: 26px;
+    line-height: 47px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    text-align: center;
+}
+
+.calculator-list{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+.main-block-basket-list{
+    display: flex;
+    justify-content: center;
+}
+
+  .calculator-item{
+    width: auto;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+
+  .mb-list{
+      margin-bottom: 5px;
+  }
+
+  .calculator-item-img{
+      margin-right: 3rem;
+      padding-top: 0.75rem;
+  }
+
+  .calculator-item-title {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+
+  .calculator-item-info {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: #7f7f7f;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    width: auto;
+}
+
+.calculator-item-calories {
+  margin-right: 25px;
+}
+
+  .calculator-item-bottom{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+  }
+
+  .calculator-item-controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.calculator-btn {
+  width: 30px;
+  min-width: 30px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 5px;
+  font-family: Rubik;
+}
+
+.calculator-count{
+    padding-top: 7px;
+    font-size: 16px;
+}
+
+.basket-empty{
+    font-size: 20px;
+    line-height: 47px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    text-align: center;
+}
+
+.calculator-sum{
+    padding-top: 5px;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+.calculator-btn-delete {
+  padding: 0px;
+  width: 100px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 30px;
+}
+
+.calculator-btn-order{
+  padding: 0px;
+  width: 300px;
+  left: 50%;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#6A1B9A;
+  border-radius: 15px;
+  transform: translate(-50%);
+}
+
+/* Footer */
+footer{
+    background-color: #555;
+    padding: 70px 0 15px 0;
+    margin-top: auto;
+}
+
+footer a{
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.row-footer{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.footer-logo{
+    width: 100%;
+    margin-top: -10px;
+    max-width: 90px;
+}
+
+.footer-menu li {
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+
+footer .contact .phone{
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+footer .contact .worktime {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    margin-left: 14px;
+    margin-bottom: 15px;
+}
+
+footer .contact .follow-text {
+    margin-left: 14px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+}
+
+footer .contact .follow-icon {
+    margin-left: 14px;
+}
+
+footer .bot-footer {
+    margin-top: 50px;
+}
+
+footer .bot-footer .bot-text, footer .bot-footer .bot-text-right {
+    font-size: 13px;
+    color: rgba(255,255,255,.6);
+}
+
+

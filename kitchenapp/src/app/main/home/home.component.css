@@ -1,0 +1,279 @@
+.nav-image-bg{
+    background: url(https://www.sobaka.ru/images/image/01/29/76/29/_normal.jpg); 
+    width: 100%;
+    height: 720px;
+    z-index: 2;
+  }
+
+  button{
+    background:none;
+    border:none;
+  }
+  
+  .nav-image-bg-shadow{
+    box-shadow: 10px 10px 10px rgba(76, 25, 124, 0.5);
+  }
+  
+  .slider-nav-count{
+      background-color:rgba(255, 254, 254, 0.3);
+      color: #fff;
+      font-size: 150px;
+      font-weight: 600px;
+      position: relative;
+  }
+  
+  .title-slide{
+      margin-top: 25px;
+      font-size: 75px;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+  }
+  
+  .content-block{
+     position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
+  /* Main zone */
+  .main-zone{
+    position: relative;
+    width: 100%;
+  }
+  
+  .main-block{
+    position: relative;
+    padding: 50px 0 100px 0;
+  }
+  
+  .main-block-title{
+      font-size: 25px;
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 34px;
+  }
+  
+  .main-block-card-list{
+      display: flex;
+      justify-content: center;
+  }
+  
+  .main-block-card-list-item{
+      min-width: 118px;
+      width: 140px;
+      padding: 10px 22px 11px 11px;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+  
+  .icon{
+    opacity: 1;
+  }
+  
+  .title{
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  
+  /* Table and calk */
+  .table-zone{
+    max-width: 1150px;
+    margin: 0 auto;
+    margin-bottom: 150px;
+  }
+
+  .raw{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .thead-colors{
+    background: #6A1B9A;
+    color:#fff;
+  }
+
+  .calk-col{
+    padding: 0;
+  }
+
+  .calculator{
+    width: 360px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 22px 20px 25px 35px;
+    position: initial;
+    max-width: none;
+    margin-bottom: 20px;
+    box-shadow: 15px 10px 28px  rgba(76, 25, 124, 0.5);
+    position: sticky;
+    top: 75px;
+  }
+
+  .calculator-title{
+    display: block;
+    font-size: 26px;
+    line-height: 47px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    text-align: center;
+  }
+
+  .calculator-list{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .calculator-item{
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+
+  .calculator-item-title {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+
+  .calculator-item-info {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: #7f7f7f;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    width: auto;
+}
+
+.calculator-item-calories {
+  margin-right: 25px;
+}
+
+  .calculator-item-bottom{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+  }
+
+  .calculator-item-controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.calculator-btn {
+  width: 30px;
+  min-width: 30px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 5px;
+  font-family: Rubik;
+}
+
+.calculator-btn-delete {
+  padding: 0px;
+  width: 100px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#69F0AE;
+  border-radius: 30px;
+}
+
+.calculator-btn-basket{
+  padding: 0px;
+  width: 110px;
+  border: 0;
+  outline: 0;
+  color:white;
+  background:#6A1B9A;
+  border-radius: 5px;
+}
+
+.calculator-count{
+  padding-top: 7px;
+  font-size: 16px;
+}
+
+.calculator-sum{
+  padding-top: 5px;
+  font-size: 16px;
+  margin-right: 25px;
+}
+
+.calculator-footer {
+  position: initial;
+  width: auto;
+  height: auto;
+  background: url(http://domstolovaya.ru/local/styles/img/content/check.png) no-repeat left 0 top 10px;
+  padding-left: 42px;
+  padding-bottom: 20px;
+  padding-top: 17px;
+  display: flex;
+}
+
+.calculator-result-title{
+    font-family: Rubik;
+    font-size: 11px;
+    color: #919191;
+}
+
+.calculator-result-position{
+  margin-right: 1.5rem;
+}
+
+.calculator-result {
+  font-family: "Segoe UI";
+  font-size: 12px;
+  line-height: 16px;
+  color: #919191;
+}
+
+.calculator-result-price {
+  font-size: 18px;
+  color: #000;
+  line-height: 25px;
+  margin-right: 15px;
+}
+
+  .icon{
+    padding: 5px;
+  }
+
+  .td-text{
+    text-align: left;
+  }
+  
+  table td{
+    padding: .75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+}

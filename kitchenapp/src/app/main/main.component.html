@@ -1,0 +1,135 @@
+<!-- Navbar -->
+<div class="block">
+<div>
+  <mat-toolbar class="nav-bshadow p-1 shadow-2" color="primary">
+    <mat-toolbar-row>
+      <span class="mr-3"
+        ><img
+          src="../../assets/images/ttk.png"
+          width="50px"
+          height="50px"
+        />Kitchen</span
+      >
+      <button class="navbar-button mr-2" mat-flat-button color="primary"  (click)="toMain()">
+        Главная
+      </button>
+
+      <button class="navbar-button mr-2"  mat-flat-button color="primary" [matMenuTriggerFor]="menu">Меню</button>
+      <mat-menu #menu="matMenu">
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Soup')">Супы</button>
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Dinner')">Обеды</button>
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Salad')">Салаты</button>
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Dessert')">Десерты</button>
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Fruit')">Фрукты</button>
+        <button class="navbar-button" mat-menu-item (click)="toFoodCategory('Drink')">Напитки</button>
+      </mat-menu>
+      <span class="navbar-space"></span>
+      <app-digital-clock></app-digital-clock>
+      <button mat-icon-button class="navbaar-icon-btn" (click)="toBasket()">
+        <mat-icon aria-hidden="false">
+          <span class="material-icons">
+            shopping_cart
+          </span>
+      </mat-icon>
+      </button>
+      <button mat-icon-button class="navbaar-icon-btn" (click)="toProfile()">
+        <mat-icon aria-hidden="false">
+          <span class="material-icons">
+            person
+            </span>
+      </mat-icon></button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<button [hidden]="true" type="button" id="openBasket" data-toggle="modal" data-target="#viewBasket">
+</button>
+
+<router-outlet></router-outlet>
+
+<!-- Basket -->
+<div class="modal draggable fade bd-example-modal-lg" id="viewBasket" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog msize" role="document">
+      <div class="basket-content">
+        <div class="basket-title">
+          <p>Корзина</p>
+        </div>
+        <div *ngIf="wishFood.length !=0">
+        <div *ngFor="let food of foodCount | keyvalue" class="mb-list">
+          <div class="calculator-list">
+            <div class="calculator-item-img">
+              <img height="100" width="100" src="{{food?.value.food.foodImageUrl}}" class="rounded-circle img-fluid img-thumbnail" alt=""/>
+            </div>
+            <div class="calculator-item">
+              <div class="calculator-item-title">{{food?.value.food.name}}</div>
+              <div class="calculator-item-info">
+                <div class="calculator-item-calories">{{food?.value.food.calories}} ккал</div>
+                <div class="calculator-item-weight">{{food?.value.food.weight}} гр.</div>
+              </div>
+              <div class="calculator-item-bottom">
+                <div class="calculator-item-controls">
+                  <button mat-raised-button class="calculator-btn" (click)="onPlusCount(food?.value.food)">+</button>
+                  <div class="calculator-count">{{food?.value.count}}</div>
+                  <button mat-raised-button class="calculator-btn" (click)="onMinusCount(food?.value.food)">-</button>
+                </div>
+                <div class="calculator-sum">{{food?.value.sum}} р.</div>
+                <div>
+                  <button mat-raised-button class="calculator-btn-delete" (click)="onRemoveFood(food?.value.food)">Удалить</button>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div *ngIf="wishFood.length > 0">
+          <button mat-raised-button class="calculator-btn-order" (click)="toPay()">Оформить заказ</button>
+        </div>
+        <div class="basket-empty" *ngIf="wishFood.length == 0">
+          Корзина пуста
+        </div>
+      </div>
+    </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row-footer">
+      <div class="col-md-2">
+        <img class="footer-logo" src="../../assets/images/ttk.png" />
+      </div>
+      <div class="col-md-4">
+        <ul class="footer-menu">
+          <li><a href="#">Главная</a></li>
+          <li><a href="#">Меню</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <div class="contact">
+          <a class="phone" href="tel:+123T"><fa-icon [icon]="faPhoneAlt"></fa-icon> 8-960-564-34-56</a>
+          <p class="worktime">с 9:00 до 19:00 ежедневно</p>
+          <p class="follow-text">Мы в соц. сетях</p>
+          <div class="follow-icon">
+            <a class="mr-3" href="https://vk.com/ttk"><fa-icon [icon]="faVk"></fa-icon></a>
+            <a class="mr-3" href="https://www.instagram.com/ttk.rus/?hl=ru"><fa-icon [icon]="faInstagram"></fa-icon></a>
+            <a class="mr-3" href="https://www.facebook.com/ttk.rus/"><fa-icon [icon]="faFacebook"></fa-icon></a>
+            <a class="mr-3" href="https://twitter.com/ttk_ru?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><fa-icon [icon]="faTwitter"></fa-icon></a>
+            <a class="mr-3" href="https://ok.ru/ttk"><fa-icon [icon]="faOdnoklassniki"></fa-icon></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-footer bot-footer">
+      <div class="col-sm-6">
+        <p class="bot-text">
+          2021 ООО "TTK" <a href=""></a>
+        </p>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <p class="bot-text-right">Дизайн и разработка Roman Mihalsky</p>
+    </div>
+    </div>
+  </div>
+</footer>
+</div>

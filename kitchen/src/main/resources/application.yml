@@ -1,0 +1,24 @@
+jwt:
+   secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbol$'
+
+server:
+     port: 8083
+spring:
+   datasource:
+      platform: postgres
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/kitchen
+      password: user
+      username: user
+   jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    open-in-view: false
+    generate-ddl: true
+    mvc:
+     throw-exception-if-no-handler-found: true
+    resources:
+     add-mappings: false
